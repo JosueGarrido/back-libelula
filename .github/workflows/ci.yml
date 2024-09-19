@@ -1,0 +1,34 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - master  # Se ejecuta cuando hay un push a la rama master
+  pull_request:
+    branches:
+      - master  # Se ejecuta cuando se abre un pull request hacia la rama master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Usa una máquina virtual Ubuntu
+
+    steps:
+      - name: Checkout code  # Clona el código del repositorio
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js  # Configura Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Ajusta la versión de Node.js según tu proyecto
+
+      - name: Install dependencies  # Instala las dependencias
+        run: npm install
+
+      - name: Run lint  # Verifica el estilo del código con eslint
+        run: npm run lint
+
+      - name: Run tests  # Ejecuta las pruebas de tu proyecto
+        run: npm run test
+
+      - name: Build the project  # Construye el proyecto si todo pasa
+        run: npm run build
