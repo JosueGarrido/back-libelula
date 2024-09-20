@@ -15,8 +15,12 @@ describe('AuthService', () => {
           provide: UsersService,
           useValue: {
             findUserByEmail: jest.fn().mockResolvedValue({
-              id: '1',
-              email: 'test@example.com',
+              _id: '1',
+              _doc: {
+                email: 'test@example.com', // Incluye `_doc` en el mock
+                _id: '1',
+                role: 'admin',
+              },
               password: 'hashedPassword',
             }),
           },
@@ -35,16 +39,12 @@ describe('AuthService', () => {
   });
 
   it('debe validar un usuario y retornar un token JWT', async () => {
-    jest.spyOn(usersService, 'findUserByEmail').mockResolvedValue({
-      role: 'admin',
-      email: 'test@example.com',
-      password: 'hashedPassword',
-      entityId: '123',
-    });
-
     const result = await authService.login({
-      email: 'test@example.com',
-      password: 'password123',
+      _doc: {
+        email: 'test@example.com',
+        _id: '1',
+        role: 'admin',
+      },
     });
     expect(result).toEqual({ access_token: 'jwt-token' });
   });

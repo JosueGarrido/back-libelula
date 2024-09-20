@@ -14,7 +14,7 @@ import { UsersService } from './users.service';
 import { User } from './schemas/user.schema';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Roles } from '../auth/roles.decorator';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { RolesGuard } from '../auth/roles.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import {
   ApiBearerAuth,

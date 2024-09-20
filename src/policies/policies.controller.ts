@@ -12,9 +12,9 @@ import {
 } from '@nestjs/common';
 import { PoliciesService } from './policies.service';
 import { Policy } from './schemas/policy.schema';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { Roles } from 'src/auth/roles.decorator';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Roles } from '../auth/roles.decorator';
+import { RolesGuard } from '../auth/roles.guard';
 import { CreatePolicyDto } from './dto/create-policy.dto';
 import {
   ApiBearerAuth,

@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { CustomersService } from './customers.service';
 import { Customer } from './schemas/customer.schema';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import {
   ApiBearerAuth,
@@ -20,8 +20,8 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { Roles } from 'src/auth/roles.decorator';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { Roles } from '../auth/roles.decorator';
+import { RolesGuard } from '../auth/roles.guard';
 
 @ApiTags('Clientes')
 @Controller('customers')
