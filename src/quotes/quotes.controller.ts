@@ -1,11 +1,27 @@
-import { Controller, Post, Body, Param, Get, Put, Delete, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Param,
+  Get,
+  Put,
+  Delete,
+  UseGuards,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { QuotesService } from './quotes.service';
 import { Quote } from './schemas/quote.schema';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Roles } from 'src/auth/roles.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { CreateQuoteDto } from './dto/create-quote.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('Cotizaciones')
 @Controller('quotes')
@@ -32,9 +48,12 @@ export class QuotesController {
   @Get(':id')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Obtener una cotización por ID' })
-  @ApiResponse({ status: 200, description: 'Cotización encontrada exitosamente' })
+  @ApiResponse({
+    status: 200,
+    description: 'Cotización encontrada exitosamente',
+  })
   @ApiResponse({ status: 404, description: 'Cotización no encontrada' })
-  @Roles('admin','cliente','broker')
+  @Roles('admin', 'cliente', 'broker')
   async getQuoteById(@Param('id') id: string) {
     return this.quotesService.getQuoteById(id);
   }

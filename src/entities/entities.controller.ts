@@ -1,9 +1,25 @@
-import { Controller, Post, Body, Param, Get, Put, Delete, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Param,
+  Get,
+  Put,
+  Delete,
+  UseGuards,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { EntitiesService } from './entities.service';
 import { Entity } from './schemas/entity.schema';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreateEntityDto } from './dto/create-entity.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Roles } from 'src/auth/roles.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 
@@ -33,13 +49,16 @@ export class EntitiesController {
   @ApiOperation({ summary: 'Obtener una entidad por ID' })
   @ApiResponse({ status: 200, description: 'Entidad encontrada exitosamente' })
   @ApiResponse({ status: 404, description: 'Entidad no encontrada' })
-  @Roles('admin','cliente','broker')
+  @Roles('admin', 'cliente', 'broker')
   async getEntityById(@Param('id') id: string) {
     return this.entitiesService.getEntityById(id);
   }
 
   @Put(':id')
-  async updateEntity(@Param('id') id: string, @Body() updates: Partial<Entity>) {
+  async updateEntity(
+    @Param('id') id: string,
+    @Body() updates: Partial<Entity>,
+  ) {
     return this.entitiesService.updateEntity(id, updates);
   }
 

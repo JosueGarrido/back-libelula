@@ -9,13 +9,13 @@ export class Policy {
   policyNumber: string;
 
   @Prop({ required: true })
-  customerId: string;  // Key al cliente
+  customerId: string; // Key al cliente
 
   @Prop({ required: true })
   details: string;
 
   @Prop({ required: true })
-  entityId: string;  // Key a la entidad
+  entityId: string; // Key a la entidad
 }
 
 export const PolicySchema = SchemaFactory.createForClass(Policy);

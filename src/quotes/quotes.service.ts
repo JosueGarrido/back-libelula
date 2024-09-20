@@ -5,10 +5,22 @@ import { Quote, QuoteDocument } from './schemas/quote.schema';
 
 @Injectable()
 export class QuotesService {
-  constructor(@InjectModel(Quote.name) private quoteModel: Model<QuoteDocument>) {}
+  constructor(
+    @InjectModel(Quote.name) private quoteModel: Model<QuoteDocument>,
+  ) {}
 
-  async createQuote(quoteNumber: string, customerId: string, policyDetails: string, entityId: string): Promise<Quote> {
-    const quote = new this.quoteModel({ quoteNumber, customerId, policyDetails, entityId });
+  async createQuote(
+    quoteNumber: string,
+    customerId: string,
+    policyDetails: string,
+    entityId: string,
+  ): Promise<Quote> {
+    const quote = new this.quoteModel({
+      quoteNumber,
+      customerId,
+      policyDetails,
+      entityId,
+    });
     return quote.save();
   }
 

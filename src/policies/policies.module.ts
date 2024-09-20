@@ -10,6 +10,6 @@ import { Policy, PolicySchema } from './schemas/policy.schema';
   ],
   providers: [PoliciesService],
   controllers: [PoliciesController],
-  exports: [PoliciesService]
+  exports: [PoliciesService],
 })
 export class PoliciesModule {}

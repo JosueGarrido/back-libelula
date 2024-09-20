@@ -7,15 +7,24 @@ export class CreateQuoteDto {
   @IsNotEmpty()
   quoteNumber: string;
 
-  @ApiProperty({ example: 'customer123', description: 'ID del cliente asociado' })
+  @ApiProperty({
+    example: 'customer123',
+    description: 'ID del cliente asociado',
+  })
   @IsNotEmpty()
   customerId: string;
 
-  @ApiProperty({ example: 'Detalles de la póliza propuesta', description: 'Detalles de la póliza propuesta' })
+  @ApiProperty({
+    example: 'Detalles de la póliza propuesta',
+    description: 'Detalles de la póliza propuesta',
+  })
   @IsString()
   policyDetails: string;
 
-  @ApiProperty({ example: 'entity123', description: 'ID de la entidad asociada' })
+  @ApiProperty({
+    example: 'entity123',
+    description: 'ID de la entidad asociada',
+  })
   @IsNotEmpty()
   entityId: string;
 }

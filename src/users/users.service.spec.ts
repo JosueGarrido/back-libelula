@@ -27,14 +27,23 @@ describe('UsersService', () => {
   });
 
   it('debe encontrar un usuario por ID', async () => {
-    jest.spyOn(userModel, 'findById').mockResolvedValue({ id: '1', email: 'test@example.com' } as any);
+    jest
+      .spyOn(userModel, 'findById')
+      .mockResolvedValue({ id: '1', email: 'test@example.com' } as any);
     const result = await usersService.findUserById('1');
     expect(result).toEqual({ id: '1', email: 'test@example.com' });
   });
 
   it('debe crear un usuario', async () => {
-    jest.spyOn(userModel, 'create').mockResolvedValue({ id: '1', email: 'test@example.com' } as any);
-    const result = await usersService.createUser('test@example.com', 'password123', 'admin', 'entity123');
+    jest
+      .spyOn(userModel, 'create')
+      .mockResolvedValue({ id: '1', email: 'test@example.com' } as any);
+    const result = await usersService.createUser(
+      'test@example.com',
+      'password123',
+      'admin',
+      'entity123',
+    );
     expect(result).toEqual({ id: '1', email: 'test@example.com' });
   });
 });

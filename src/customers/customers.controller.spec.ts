@@ -4,7 +4,6 @@ import { CustomersService } from './customers.service';
 
 describe('CustomersController', () => {
   let customersController: CustomersController;
-  let customersService: CustomersService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -13,20 +12,31 @@ describe('CustomersController', () => {
         {
           provide: CustomersService,
           useValue: {
-            getCustomerById: jest.fn().mockResolvedValue({ id: '1', name: 'Cliente 1', email: 'cliente1@example.com' }),
-            createCustomer: jest.fn().mockResolvedValue({ id: '1', name: 'Cliente 1', email: 'cliente1@example.com' }),
+            getCustomerById: jest.fn().mockResolvedValue({
+              id: '1',
+              name: 'Cliente 1',
+              email: 'cliente1@example.com',
+            }),
+            createCustomer: jest.fn().mockResolvedValue({
+              id: '1',
+              name: 'Cliente 1',
+              email: 'cliente1@example.com',
+            }),
           },
         },
       ],
     }).compile();
 
     customersController = module.get<CustomersController>(CustomersController);
-    customersService = module.get<CustomersService>(CustomersService);
   });
 
   it('debe retornar un cliente por ID', async () => {
     const result = await customersController.getCustomerById('1');
-    expect(result).toEqual({ id: '1', name: 'Cliente 1', email: 'cliente1@example.com' });
+    expect(result).toEqual({
+      id: '1',
+      name: 'Cliente 1',
+      email: 'cliente1@example.com',
+    });
   });
 
   it('debe crear un cliente', async () => {
@@ -36,6 +46,10 @@ describe('CustomersController', () => {
       phone: '+123456789',
       entityId: 'entity123',
     });
-    expect(result).toEqual({ id: '1', name: 'Cliente 1', email: 'cliente1@example.com' });
+    expect(result).toEqual({
+      id: '1',
+      name: 'Cliente 1',
+      email: 'cliente1@example.com',
+    });
   });
 });

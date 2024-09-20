@@ -10,8 +10,8 @@ import { UsersModule } from '../users/users.module';
   imports: [
     PassportModule,
     JwtModule.register({
-      secret: 'Test_Libelula_1203', 
-      signOptions: { expiresIn: '30m' },  
+      secret: 'Test_Libelula_1203',
+      signOptions: { expiresIn: '30m' },
     }),
     UsersModule,
   ],

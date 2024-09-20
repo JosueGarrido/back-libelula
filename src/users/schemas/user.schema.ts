@@ -15,7 +15,7 @@ export class User {
   role: string;
 
   @Prop({ required: true })
-  entityId: string;  // Key a la entidad a la que pertenece
+  entityId: string; // Key a la entidad a la que pertenece
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

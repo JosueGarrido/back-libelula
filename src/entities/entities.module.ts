@@ -11,6 +11,6 @@ import { Entity, EntitySchema } from './schemas/entity.schema';
   ],
   providers: [EntitiesService],
   controllers: [EntitiesController],
-  exports: [EntitiesService]
+  exports: [EntitiesService],
 })
 export class EntitiesModule {}

@@ -27,14 +27,22 @@ describe('EntitiesService', () => {
   });
 
   it('debe encontrar una entidad por ID', async () => {
-    jest.spyOn(entityModel, 'findById').mockResolvedValue({ id: '1', name: 'Entidad' } as any);
+    jest
+      .spyOn(entityModel, 'findById')
+      .mockResolvedValue({ id: '1', name: 'Entidad' } as any);
     const result = await entitiesService.getEntityById('1');
     expect(result).toEqual({ id: '1', name: 'Entidad' });
   });
 
   it('debe crear una entidad', async () => {
-    jest.spyOn(entityModel, 'create').mockResolvedValue({ id: '1', name: 'Entidad' } as any);
-    const result = await entitiesService.createEntity('Entidad', 'Calle Falsa 123', 'contact@entidad.com');
+    jest
+      .spyOn(entityModel, 'create')
+      .mockResolvedValue({ id: '1', name: 'Entidad' } as any);
+    const result = await entitiesService.createEntity(
+      'Entidad',
+      'Calle Falsa 123',
+      'contact@entidad.com',
+    );
     expect(result).toEqual({ id: '1', name: 'Entidad' });
   });
 });

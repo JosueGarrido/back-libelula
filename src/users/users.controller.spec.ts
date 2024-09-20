@@ -4,7 +4,6 @@ import { UsersService } from './users.service';
 
 describe('UsersController', () => {
   let usersController: UsersController;
-  let usersService: UsersService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -13,15 +12,18 @@ describe('UsersController', () => {
         {
           provide: UsersService,
           useValue: {
-            findUserById: jest.fn().mockResolvedValue({ id: '1', email: 'test@example.com' }),
-            createUser: jest.fn().mockResolvedValue({ id: '1', email: 'test@example.com' }),
+            findUserById: jest
+              .fn()
+              .mockResolvedValue({ id: '1', email: 'test@example.com' }),
+            createUser: jest
+              .fn()
+              .mockResolvedValue({ id: '1', email: 'test@example.com' }),
           },
         },
       ],
     }).compile();
 
     usersController = module.get<UsersController>(UsersController);
-    usersService = module.get<UsersService>(UsersService);
   });
 
   it('debe retornar un usuario por ID', async () => {

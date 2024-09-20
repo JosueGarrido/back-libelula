@@ -9,13 +9,13 @@ export class Quote {
   quoteNumber: string;
 
   @Prop({ required: true })
-  customerId: string;  // Key al cliente 
+  customerId: string; // Key al cliente
 
   @Prop({ required: true })
   policyDetails: string;
 
   @Prop({ required: true })
-  entityId: string;  // Key a la entidad
+  entityId: string; // Key a la entidad
 }
 
 export const QuoteSchema = SchemaFactory.createForClass(Quote);

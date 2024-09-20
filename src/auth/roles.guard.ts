@@ -20,7 +20,6 @@ export class RolesGuard extends JwtAuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const user = request.user;
 
-
     if (!user || !user.role) {
       throw new Error('El campo `role` no está definido en el objeto `user`');
     }

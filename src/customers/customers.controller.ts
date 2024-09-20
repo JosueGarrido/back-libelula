@@ -1,9 +1,25 @@
-import { Controller, Post, Body, Param, Get, Put, Delete, UseGuards, ValidationPipe, UsePipes } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Param,
+  Get,
+  Put,
+  Delete,
+  UseGuards,
+  ValidationPipe,
+  UsePipes,
+} from '@nestjs/common';
 import { CustomersService } from './customers.service';
 import { Customer } from './schemas/customer.schema';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreateCustomerDto } from './dto/create-customer.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Roles } from 'src/auth/roles.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 
@@ -34,13 +50,16 @@ export class CustomersController {
   @ApiOperation({ summary: 'Obtener un cliente por ID' })
   @ApiResponse({ status: 200, description: 'Cliente encontrado exitosamente' })
   @ApiResponse({ status: 404, description: 'Cliente no encontrado' })
-  @Roles('admin','cliente','broker')
+  @Roles('admin', 'cliente', 'broker')
   async getCustomerById(@Param('id') id: string) {
     return this.customersService.getCustomerById(id);
   }
 
   @Put(':id')
-  async updateCustomer(@Param('id') id: string, @Body() updates: Partial<Customer>) {
+  async updateCustomer(
+    @Param('id') id: string,
+    @Body() updates: Partial<Customer>,
+  ) {
     return this.customersService.updateCustomer(id, updates);
   }
 

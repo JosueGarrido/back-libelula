@@ -27,14 +27,23 @@ describe('QuotesService', () => {
   });
 
   it('debe encontrar una cotización por ID', async () => {
-    jest.spyOn(quoteModel, 'findById').mockResolvedValue({ id: '1', quoteNumber: 'QUO12345' } as any);
+    jest
+      .spyOn(quoteModel, 'findById')
+      .mockResolvedValue({ id: '1', quoteNumber: 'QUO12345' } as any);
     const result = await quotesService.getQuoteById('1');
     expect(result).toEqual({ id: '1', quoteNumber: 'QUO12345' });
   });
 
   it('debe crear una cotización', async () => {
-    jest.spyOn(quoteModel, 'create').mockResolvedValue({ id: '1', quoteNumber: 'QUO12345' } as any);
-    const result = await quotesService.createQuote('QUO12345', 'customer123', 'Seguro de vida', 'entity123');
+    jest
+      .spyOn(quoteModel, 'create')
+      .mockResolvedValue({ id: '1', quoteNumber: 'QUO12345' } as any);
+    const result = await quotesService.createQuote(
+      'QUO12345',
+      'customer123',
+      'Seguro de vida',
+      'entity123',
+    );
     expect(result).toEqual({ id: '1', quoteNumber: 'QUO12345' });
   });
 });

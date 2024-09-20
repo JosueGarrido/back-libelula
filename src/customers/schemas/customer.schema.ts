@@ -15,7 +15,7 @@ export class Customer {
   phone: string;
 
   @Prop({ required: true })
-  entityId: string;  // Key a la entidad
+  entityId: string; // Key a la entidad
 }
 
 export const CustomerSchema = SchemaFactory.createForClass(Customer);

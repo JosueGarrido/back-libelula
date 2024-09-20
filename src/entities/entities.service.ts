@@ -5,9 +5,15 @@ import { Entity, EntityDocument } from './schemas/entity.schema';
 
 @Injectable()
 export class EntitiesService {
-  constructor(@InjectModel(Entity.name) private entityModel: Model<EntityDocument>) {}
+  constructor(
+    @InjectModel(Entity.name) private entityModel: Model<EntityDocument>,
+  ) {}
 
-  async createEntity(name: string, address: string, contactEmail: string): Promise<Entity> {
+  async createEntity(
+    name: string,
+    address: string,
+    contactEmail: string,
+  ): Promise<Entity> {
     const entity = new this.entityModel({ name, address, contactEmail });
     return entity.save();
   }
@@ -17,7 +23,9 @@ export class EntitiesService {
   }
 
   async updateEntity(id: string, updates: Partial<Entity>): Promise<Entity> {
-    return this.entityModel.findByIdAndUpdate(id, updates, { new: true }).exec();
+    return this.entityModel
+      .findByIdAndUpdate(id, updates, { new: true })
+      .exec();
   }
 
   async deleteEntity(id: string): Promise<Entity> {

@@ -4,7 +4,6 @@ import { EntitiesService } from './entities.service';
 
 describe('EntitiesController', () => {
   let entitiesController: EntitiesController;
-  let entitiesService: EntitiesService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -13,15 +12,18 @@ describe('EntitiesController', () => {
         {
           provide: EntitiesService,
           useValue: {
-            getEntityById: jest.fn().mockResolvedValue({ id: '1', name: 'Entidad' }),
-            createEntity: jest.fn().mockResolvedValue({ id: '1', name: 'Entidad' }),
+            getEntityById: jest
+              .fn()
+              .mockResolvedValue({ id: '1', name: 'Entidad' }),
+            createEntity: jest
+              .fn()
+              .mockResolvedValue({ id: '1', name: 'Entidad' }),
           },
         },
       ],
     }).compile();
 
     entitiesController = module.get<EntitiesController>(EntitiesController);
-    entitiesService = module.get<EntitiesService>(EntitiesService);
   });
 
   it('debe retornar una entidad por ID', async () => {

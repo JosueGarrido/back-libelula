@@ -4,7 +4,6 @@ import { AuthService } from './auth.service';
 
 describe('AuthController', () => {
   let authController: AuthController;
-  let authService: AuthService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -20,11 +19,13 @@ describe('AuthController', () => {
     }).compile();
 
     authController = module.get<AuthController>(AuthController);
-    authService = module.get<AuthService>(AuthService);
   });
 
   it('debe retornar un token JWT en el login', async () => {
-    const result = await authController.login({ email: 'test@example.com', password: 'password123' });
+    const result = await authController.login({
+      email: 'test@example.com',
+      password: 'password123',
+    });
     expect(result).toEqual({ access_token: 'jwt-token' });
   });
 });

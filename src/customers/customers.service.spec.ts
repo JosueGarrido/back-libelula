@@ -27,14 +27,23 @@ describe('CustomersService', () => {
   });
 
   it('debe encontrar un cliente por ID', async () => {
-    jest.spyOn(customerModel, 'findById').mockResolvedValue({ id: '1', name: 'Cliente 1' } as any);
+    jest
+      .spyOn(customerModel, 'findById')
+      .mockResolvedValue({ id: '1', name: 'Cliente 1' } as any);
     const result = await customersService.getCustomerById('1');
     expect(result).toEqual({ id: '1', name: 'Cliente 1' });
   });
 
   it('debe crear un cliente', async () => {
-    jest.spyOn(customerModel, 'create').mockResolvedValue({ id: '1', name: 'Cliente 1' } as any);
-    const result = await customersService.createCustomer('Cliente 1', 'cliente1@example.com', '+123456789', 'entity123');
+    jest
+      .spyOn(customerModel, 'create')
+      .mockResolvedValue({ id: '1', name: 'Cliente 1' } as any);
+    const result = await customersService.createCustomer(
+      'Cliente 1',
+      'cliente1@example.com',
+      '+123456789',
+      'entity123',
+    );
     expect(result).toEqual({ id: '1', name: 'Cliente 1' });
   });
 });

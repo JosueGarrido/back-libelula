@@ -13,7 +13,11 @@ describe('JwtStrategy', () => {
         {
           provide: UsersService,
           useValue: {
-            findUserById: jest.fn().mockResolvedValue({ id: '1', email: 'test@example.com', role: 'admin' }),
+            findUserById: jest.fn().mockResolvedValue({
+              id: '1',
+              email: 'test@example.com',
+              role: 'admin',
+            }),
           },
         },
       ],
@@ -26,7 +30,11 @@ describe('JwtStrategy', () => {
   it('debe validar el token JWT y retornar el usuario', async () => {
     const payload = { sub: '1', email: 'test@example.com' };
     const result = await jwtStrategy.validate(payload);
-    expect(result).toEqual({ userId: '1', email: 'test@example.com', role: 'admin' });
+    expect(result).toEqual({
+      userId: '1',
+      email: 'test@example.com',
+      role: 'admin',
+    });
   });
 
   it('debe lanzar un error si el usuario no existe', async () => {

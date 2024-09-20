@@ -27,14 +27,23 @@ describe('PoliciesService', () => {
   });
 
   it('debe encontrar una póliza por ID', async () => {
-    jest.spyOn(policyModel, 'findById').mockResolvedValue({ id: '1', policyNumber: 'POL12345' } as any);
+    jest
+      .spyOn(policyModel, 'findById')
+      .mockResolvedValue({ id: '1', policyNumber: 'POL12345' } as any);
     const result = await policiesService.getPolicyById('1');
     expect(result).toEqual({ id: '1', policyNumber: 'POL12345' });
   });
 
   it('debe crear una póliza', async () => {
-    jest.spyOn(policyModel, 'create').mockResolvedValue({ id: '1', policyNumber: 'POL12345' } as any);
-    const result = await policiesService.createPolicy('POL12345', 'customer123', 'Seguro de vida', 'entity123');
+    jest
+      .spyOn(policyModel, 'create')
+      .mockResolvedValue({ id: '1', policyNumber: 'POL12345' } as any);
+    const result = await policiesService.createPolicy(
+      'POL12345',
+      'customer123',
+      'Seguro de vida',
+      'entity123',
+    );
     expect(result).toEqual({ id: '1', policyNumber: 'POL12345' });
   });
 });
