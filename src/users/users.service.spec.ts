@@ -25,7 +25,7 @@ describe('UsersService', () => {
                 role: 'admin',
               }),
             }),
-            // Mock de create
+            
             create: jest.fn().mockResolvedValue({
               _id: '1',
               email: 'test@example.com',

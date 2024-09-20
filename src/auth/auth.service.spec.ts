@@ -17,7 +17,7 @@ describe('AuthService', () => {
             findUserByEmail: jest.fn().mockResolvedValue({
               _id: '1',
               _doc: {
-                email: 'test@example.com', // Incluye `_doc` en el mock
+                email: 'test@example.com',
                 _id: '1',
                 role: 'admin',
               },

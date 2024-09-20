@@ -17,7 +17,7 @@ describe('EntitiesService', () => {
         {
           provide: getModelToken(Entity.name),
           useValue: {
-            // Mock de findById con exec
+            
             findById: jest.fn().mockReturnValue({
               exec: jest.fn().mockResolvedValue({
                 _id: '1',
@@ -26,10 +26,10 @@ describe('EntitiesService', () => {
                 contactEmail: 'entidad@example.com',
               }),
             }),
-            // Mock del constructor y save
+            
             new: jest.fn().mockImplementation((dto) => ({
               ...dto,
-              save: jest.fn().mockResolvedValue(dto), // Simula el método save
+              save: jest.fn().mockResolvedValue(dto), 
             })),
           },
         },

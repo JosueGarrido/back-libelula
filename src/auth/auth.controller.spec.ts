@@ -17,7 +17,7 @@ describe('AuthController', () => {
             login: jest.fn().mockResolvedValue({ access_token: 'jwt-token' }),
             validateUser: jest
               .fn()
-              .mockResolvedValue({ id: '1', email: 'test@example.com' }), // Mock para validateUser
+              .mockResolvedValue({ id: '1', email: 'test@example.com' }),
           },
         },
       ],
@@ -40,7 +40,7 @@ describe('AuthController', () => {
   });
 
   it('debe lanzar UnauthorizedException si validateUser retorna null', async () => {
-    jest.spyOn(authService, 'validateUser').mockResolvedValue(null); // Simula que no encuentra usuario
+    jest.spyOn(authService, 'validateUser').mockResolvedValue(null); 
     await expect(
       authController.login({
         email: 'invalid@example.com',

@@ -17,7 +17,7 @@ describe('QuotesService', () => {
         {
           provide: getModelToken(Quote.name),
           useValue: {
-            // Mock de findById con exec
+            
             findById: jest.fn().mockReturnValue({
               exec: jest.fn().mockResolvedValue({
                 _id: '1',
@@ -27,10 +27,10 @@ describe('QuotesService', () => {
                 entityId: 'entity123',
               }),
             }),
-            // Mock del constructor
+            
             new: jest.fn().mockImplementation((dto) => ({
               ...dto,
-              save: jest.fn().mockResolvedValue(dto), // Simulamos el método save
+              save: jest.fn().mockResolvedValue(dto),
             })),
           },
         },
